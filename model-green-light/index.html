@@ -1,0 +1,273 @@
+<!doctype html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Nadia & Pablo - ¡Nos Casamos!</title>
+  <meta name="description" content="¡NOS CASAMOS! - Nadia & Pablo - 30 de Noviembre 2026" />
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+</head>
+
+<body>
+  <!-- ============================================
+         PANTALLA DE BIENVENIDA
+    ============================================ -->
+  <div id="welcomeScreen">
+    <!-- Header con títulos animados -->
+    <div id="welcomeHeader">
+      <h2></h2>
+      <h3></h3>
+    </div>
+
+    <!-- Tarjeta tipo sobre con información del invitado -->
+    <div id="envelope" class="invite-card">
+      <p><strong id="nombreInvitado"></strong></p>
+      <p id="mensajeInvitado">TENEMOS UNA TARJETA<br />RESERVADA.</p>
+    </div>
+
+    <!-- Texto flotante indicando acción -->
+    <div id="footerText" class="footer-floating">
+      HACER CLIC PARA INGRESAR
+    </div>
+  </div>
+
+  <!-- ============================================
+         CONTENIDO PRINCIPAL (Oculto inicialmente)
+    ============================================ -->
+  <main id="mainContent" style="display: none">
+    <!-- Sección de imagen principal -->
+    <section class="image-section">
+      <div class="image-placeholder">
+        <!-- Puedes reemplazar con: <img src="ruta-a-tu-imagen.jpg" alt="Nadia & Pablo"> -->
+        <img src="assets/propuesta.png" />
+        <div class="image-overlay">
+          <h2 class="overlay-text">Nadia & Pablo</h2>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contador regresivo -->
+    <section class="countdown-section">
+      <div class="countdown-container">
+        <div class="countdown-item">
+          <div class="countdown-number" id="days">0</div>
+          <div class="countdown-label">DÍAS</div>
+        </div>
+        <div class="countdown-item">
+          <div class="countdown-number" id="hours">0</div>
+          <div class="countdown-label">HORAS</div>
+        </div>
+        <div class="countdown-item">
+          <div class="countdown-number" id="minutes">0</div>
+          <div class="countdown-label">MINUTOS</div>
+        </div>
+        <div class="countdown-item">
+          <div class="countdown-number" id="seconds">0</div>
+          <div class="countdown-label">SEGUNDOS</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Frase especial con separadores -->
+    <section class="quote-section">
+      <div class="separator"></div>
+      <h3 class="quote-text">
+        CADA DÍA ESTAMOS MÁS CERCA DE EMPEZAR EL NUEVO HOGAR QUE TANTO SOÑAMOS EN DIOS
+      </h3>
+      <div class="separator"></div>
+    </section>
+
+    <!-- Información del evento: Cuándo y Dónde -->
+    <!-- Cuándo -->
+    <section class="event-info">
+      <div class="info-card">
+        <div class="info-icon">
+          <img src="https://latarjetadigital.com.ar/wp-content/uploads/2024/11/707f62-verde-oliva-oscuro-icono-3.gif"
+            alt="Calendario" width="60" />
+        </div>
+        <h4>¿CUÁNDO?</h4>
+        <p>03 DE OCTUBRE 2026<br />| 11:00 HS |</p>
+      </div>
+    </section>
+
+    <!-- Dónde -->
+    <section class="event-location">
+      <div class="info-card">
+        <div class="info-icon">
+          <img src="https://latarjetadigital.com.ar/wp-content/uploads/2024/11/ffffff-blanco-icono-1.gif"
+            alt="Ubicación" width="60" />
+        </div>
+        <h4>¿DÓNDE?</h4>
+        <p>PARQUE EL SEMBRADOR</p>
+        <button class="btn-modal" onclick="openModal('mapModal')">
+          VER MAPA
+        </button>
+      </div>
+    </section>
+
+    <!-- Carrusel de fotos y videos -->
+    <section class="media-carousel-section">
+      <div class="media-carousel">
+        <div class="media-carousel-track">
+          <div class="media-slide active">
+            <img src="assets/mano-1.jpg" alt="Foto 1" />
+          </div>
+          <div class="media-slide">
+            <video src="assets/mano-2-5.mp4" muted playsinline></video>
+          </div>
+          <div class="media-slide">
+            <img src="assets/mano-2.jpg" alt="Foto 2" />
+          </div>
+          <div class="media-slide">
+            <img src="assets/mano-3.jpg" alt="Foto 3" />
+          </div>
+        </div>
+        <button class="media-carousel-btn prev" onclick="changeMediaSlide(-1)">&#10094;</button>
+        <button class="media-carousel-btn next" onclick="changeMediaSlide(1)">&#10095;</button>
+        <div class="media-carousel-dots" id="mediaCarouselDots"></div>
+      </div>
+    </section>
+
+    <!-- Versículo bíblico -->
+    <section class="bible-verse">
+      <div class="separator"></div>
+      <h3 style="margin-bottom: 10px;">
+        CUANDO TE DAS CUENTA QUE QUERÉS PASAR EL RESTO DE TU VIDA CON ALGUIEN, DESEÁS QUE EL RESTO DE TU VIDA EMPIECE LO
+        ANTES POSIBLE
+      </h3>
+      <img src="assets/corazon.png" height="30" alt="" srcset="">
+      <div class="separator"></div>
+    </section>
+
+    <!-- Dress Code -->
+    <section class="dress-code">
+      <img decoding="async"
+        src="https://latarjetadigital.com.ar/wp-content/uploads/2024/11/707f62-verde-oliva-oscuro-icono-20.gif" alt=""
+        width="70" height="70" loading="lazy" />
+      <span class="section-prefix">DRESS CODE</span>
+      <h4>ELEGANTE</h4>
+      <div class="divider"></div>
+      <p>
+        EL COLOR <strong>BLANCO</strong> SE RESERVA<br />EXCLUSIVAMENTE PARA
+        LA NOVIA
+      </p>
+    </section>
+
+    <!-- Sección de Regalos -->
+    <section class="gifts-section">
+      <div class="info-icon">
+        <img src="https://latarjetadigital.ar/wp-content/uploads/2024/11/ffffff-blanco-icono-12.gif" alt="Regalos"
+          width="70" />
+      </div>
+      <h5>REGALOS</h5>
+      <!-- <p>
+        SI QUERÉS SUMARTE CON UN GESTO, NOS AYUDARÍA MUCHO PARA DAR NUESTROS PRIMEROS PASOS EN ESTA NUEVA ETAPA
+      </p> -->
+      <a href="https://docs.google.com/document/d/173LGxTOMKrYe80eNCAivm_tqWioLQLYxDPBkPLzOdak/edit?tab=t.0"
+        target="_blank" class="btn-modal">VER</a>
+    </section>
+
+    <!-- Información personalizada del invitado -->
+    <section class="guest-info" id="infoInvitado">
+      <div>
+        <strong id="nombreInvitado2">INVITADO ESPECIAL</strong>
+        <span id="mensajePases">HAY 1 LUGAR<br />RESERVADO PARA VOS</span>
+      </div>
+    </section>
+
+    <!-- Confirmación de asistencia -->
+    <section class="confirmation-section">
+      <div class="info-icon">
+        <img src="https://latarjetadigital.com.ar/wp-content/uploads/2024/11/ffffff-blanco-icono-8.gif" alt="Confirmar"
+          width="60" />
+      </div>
+      <h5>CONFIRMÁ TU ASISTENCIA</h5>
+      <p>ANTES DEL 15 DE JULIO 2026</p>
+      <button class="btn-modal btn-large" onclick="openModal('confirmModal')">
+        CONFIRMAR ASISTENCIA
+      </button>
+    </section>
+
+    <!-- Firma de los novios -->
+    <section class="signature">
+      <h5>NADIA & PABLO</h5>
+      <p>LOS ESPERAMOS CON MUCHA <br />ALEGRIA</p>
+    </section>
+  </main>
+
+  <!-- ============================================
+         MODALES
+    ============================================ -->
+
+  <!-- MODAL: MAPA -->
+  <div id="mapModal" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeModal('mapModal')">&times;</span>
+      <h3>Ubicación del Evento</h3>
+      <div class="modal-body">
+        <!-- <iframe src="https://maps.google.com/maps?q=-26.823897,-65.330029&z=15&hl=es&t=m&output=embed" width="100%"
+          height="400" style="border: 0" allowfullscreen="" loading="lazy">
+        </iframe> -->
+        <iframe
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d5687.632094955197!2d-58.59821839549687!3d-34.95140097078826!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95bcd87e0a44ce57%3A0x9e309571b2313253!2sParque%20Cristiano%20El%20Sembrador!5e0!3m2!1ses-419!2sar!4v1777566849269!5m2!1ses-419!2sar"
+          width="100%" height="400" style="border:0;" allowfullscreen="" loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"></iframe>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal para Formulario -->
+  <div id="confirmModal" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeModal('confirmModal')">&times;</span>
+      <h3>CONFIRMAR ASISTENCIA</h3>
+      <form id="confirmation-form">
+        <div class="form-group" style="text-align: center;">
+          <b style="font-weight: 400; margin-bottom: 10px;" id="personGuest"></b>
+          <br>
+          <label>¿Confirma su asistencia al evento?</label>
+          <div class="radio-group">
+            <label>
+              <input type="radio" name="attendance" value="si" required>
+              ¡Confirmo!
+            </label>
+            <label>
+              <input type="radio" name="attendance" value="no" required>
+              No podré asistir
+            </label>
+          </div>
+        </div>
+        <button style="width: 100%;" type="submit" class="btn-primary" disabled>CONFIRMAR</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- ============================================
+         BOTÓN DE MÚSICA FLOTANTE
+    ============================================ -->
+  <button id="musicButton" aria-label="Controlar música">
+    <i class="fas fa-pause"></i>
+  </button>
+
+  <!-- ============================================
+         REPRODUCTOR DE YOUTUBE (OCULTO)
+    ============================================ -->
+  <div id="video-container" style="
+        width: 1px;
+        height: 1px;
+        overflow: hidden;
+        position: fixed;
+        left: -9999px;
+        top: -9999px;
+      ">
+    <div id="player"></div>
+  </div>
+
+  <!-- Scripts -->
+  <script src="https://www.youtube.com/iframe_api"></script>
+  <script src="script.js"></script>
+</body>
+
+</html>
